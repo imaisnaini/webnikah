@@ -20,9 +20,4 @@
 		echo "Databaase connection failed with followings errors : ". mysqli_connect_errno();
 		die();
 	}
-
-	require_once 'helpers.php';
-
-	// Create token
-	$GLOBAL['token'] = get_token(10);
  ?>

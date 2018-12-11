@@ -11,46 +11,28 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item <?php if(stripos($_SERVER['REQUEST_URI'], 'form1.php')){echo 'active';}?>">
-            <a class="nav-link" href="form1.php">
+          <li class="nav-item <?php if(stripos($_SERVER['REQUEST_URI'], 'form_pria.php')){echo 'active';}?>">
+            <a class="nav-link" href="form_pria.php">
               <i class="material-icons">assignment</i>
-              <p>Form 1</p>
+              <p>Mempelai Pria</p>
             </a>
           </li>
-          <li class="nav-item <?php if(stripos($_SERVER['REQUEST_URI'], 'form2.php')){echo 'active';}?>">
-            <a class="nav-link" href="form2.php">
+          <li class="nav-item <?php if(stripos($_SERVER['REQUEST_URI'], 'form_wanita.php')){echo 'active';}?>">
+            <a class="nav-link" href="form_wanita.php">
               <i class="material-icons">perm_contact_calendar</i>
-              <p>Form 2</p>
+              <p>Mempelai Wanita</p>
             </a>
           </li>
-          <li class="nav-item <?php if(stripos($_SERVER['REQUEST_URI'], 'form3.php')){echo 'active';}?>">
-            <a class="nav-link" href="form3.php">
+          <li class="nav-item <?php if(stripos($_SERVER['REQUEST_URI'], 'form_pria_ortu.php')){echo 'active';}?>">
+            <a class="nav-link" href="form_pria_ortu.php">
               <i class="material-icons">wc</i>
-              <p>Form 3</p>
+              <p>Orangtua Pria</p>
             </a>
           </li>
-          <li class="nav-item <?php if(stripos($_SERVER['REQUEST_URI'], 'form4.php')){echo 'active';}?>">
-            <a class="nav-link" href="form4.php">
+          <li class="nav-item <?php if(stripos($_SERVER['REQUEST_URI'], 'form_wanita_ortu.php')){echo 'active';}?>">
+            <a class="nav-link" href="form_wanita_ortu.php">
               <i class="material-icons">group</i>
-              <p>Form 4</p>
-            </a>
-          </li>
-          <li class="nav-item <?php if(stripos($_SERVER['REQUEST_URI'], 'form5.php')){echo 'active';}?>">
-            <a class="nav-link" href="form5.php">
-              <i class="material-icons">description</i>
-              <p>Form 5</p>
-            </a>
-          </li>
-          <li class="nav-item <?php if(stripos($_SERVER['REQUEST_URI'], 'form6.php')){echo 'active';}?>">
-            <a class="nav-link" href="form6.php">
-              <i class="material-icons">rate_review</i>
-              <p>Form 6</p>
-            </a>
-          </li>
-          <li class="nav-item <?php if(stripos($_SERVER['REQUEST_URI'], 'form7.php')){echo 'active';}?>">
-            <a class="nav-link" href="form7.php">
-              <i class="material-icons">how_to_reg</i>
-              <p>Form 7</p>
+              <p>Orangtua Wanita</p>
             </a>
           </li>
           <li class="nav-item active">

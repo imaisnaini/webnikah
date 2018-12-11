@@ -1,6 +1,34 @@
+<?php
+  require_once 'core/connection.php';
+  //session_start();
+  //session_destroy();
+  if(isset($_POST['login'])){
+    $email = $_POST['email'];
+
+    //check if email already registered
+    $query = "SELECT * FROM tbl_pria WHERE email='$email'";
+    $result = mysqli_query($conn, $query);
+    if(mysqli_num_rows($result) == 0){
+      //query for add user
+      $query_insert = "INSERT INTO tbl_pria (email) VALUES ('$email')";
+      $insert = mysqli_query($conn, $query_insert);
+      if ($insert) {
+        session_start();
+        $_SESSION["user"] = $email;
+        header('Location:form_pria.php');
+      }else{
+        echo "Error: " . $query . "<br>" . mysqli_error($conn);
+      }
+    }else{
+      session_start();
+      $_SESSION["user"] = $email;
+      header('Location:form_pria.php');
+    }
+  }
+?>
+
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -84,10 +112,20 @@
                 </h1>
                 <p class="lead  text-white">Dapatkan kemudahan dalam mendaftarkan pernikahanmu dengan mendaftarkannya secara online melalui website kami</p>
                 <div class="btn-wrapper">
-                  <a href="form1.php" class="btn btn-info btn-icon mb-3 mb-sm-0">
-                    <!--<span class="btn-inner--icon"><i class="fa fa-code"></i></span>-->
+                  <?php
+                    session_start();
+                    if(!isset($_SESSION["user"])){
+                  ?>
+                  <button class="btn btn-dark btn-icon mb-3 mb-sm-0" data-toggle="modal" data-target="#loginModal">
+                    <span class="btn-inner--text">DAFTAR ONLINE</span>
+                  </button>
+                  <?php
+                    }else{
+                  ?>
+                  <a href="form_pria.php" class="btn btn-dark btn-icon mb-3 mb-sm-0" >
                     <span class="btn-inner--text">DAFTAR ONLINE</span>
                   </a>
+                  <?php }?>
                 </div>
               </div>
             </div>
@@ -101,7 +139,38 @@
         </div>
       </section>
     </div>
+    <!--Modal Login-->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="">
+      <div class="modal-dialog modal-login" role="document">
+        <div class="modal-content">
+          <div class="card card-signup card-plain">
+            <div class="modal-header">
+              <div class="card-header card-header-info text-center">
+                <h4 class="card-title">Log in</h4>
+              </div>
+            </div>
+            <div class="modal-body">
+              <form class="form" method="POST" action="">
+                <div class="card-body">
+                  <div class="form-group bmd-form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="material-icons">email</i></div>
+                      </div>
+                      <input type="text" class="form-control" name="email" placeholder="Email...">
+                    </div>
+                  </div>
+                </div>
+                <input type="submit" class="btn btn-dark btn-icon mb-3 mb-sm-0" name="login" value="Get Started">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End Modal Login-->
   </main>
+    
   <footer class="footer has-cards">
     <div class="container container-lg">
       <div class="row">
@@ -161,12 +230,12 @@
     </div>
   </footer>
 <!-- Core -->
-  <script src="../assets/vendor/jquery/jquery.min.js"></script>
-  <script src="../assets/vendor/popper/popper.min.js"></script>
-  <script src="../assets/vendor/bootstrap/bootstrap.min.js"></script>
-  <script src="../assets/vendor/headroom/headroom.min.js"></script>
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/popper/popper.min.js"></script>
+  <script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+  <script src="assets/vendor/headroom/headroom.min.js"></script>
   <!-- Argon JS -->
-  <script src="../assets/js/argon.js?v=1.0.1"></script>
+  <script src="assets/js/argon.js?v=1.0.1"></script>
 </body>
 
 </html>
